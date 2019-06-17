@@ -3,14 +3,14 @@ resources:
   - name: RemoteFile
     type: RemoteFile
     configuration:
-      source: git_chaitanya
-      fileLocation: 'https://github.com/ChaitanyaVootla/ymlTest/edit/master/pipelines.yml'
+      source: github_kirti
+      fileLocation: 'https://github.com/kirtisahu05/ymlTest/edit/master/pipelines.yml'
       fileName: 'pipelines.yml'
       fileDateTime: 'dttm'
   - name: FileSpec
     type: FileSpec
     configuration:      
-      sourceArtifactory: docker_chaitanya
+      sourceArtifactory: docker_kirti
       pattern: 'test'
       aql: 'test'
       target: 'test'
@@ -72,7 +72,7 @@ pipelines:
             - name: RemoteFile
           integrations:
             - name: artifactoryIntegration
-            - name: git_chaitanya
+            - name: github_kirti
         execution:
           onExecute:
             - echo "done"
