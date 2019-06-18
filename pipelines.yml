@@ -30,8 +30,8 @@ resources:
       aql: 'test'
       target: 'test'
       props: 'test'
-      recursive: false
-      flat: false
+      recursive: true
+      flat: true
       excludePatterns: 'test'
       archiveEntries: 'test'
       sortBy: 'test'
