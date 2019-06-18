@@ -34,6 +34,8 @@ resources:
       flat: false
       excludePatterns: 'test'
       archiveEntries: 'test'
+      buildName: 'newBuld'
+      buildNumber: 123
       sortBy: 'test'
       sortOrder: 'test'
       limit: 1
