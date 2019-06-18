@@ -3,7 +3,7 @@ resources:
   - name: RemoteFile
     type: RemoteFile
     configuration:
-      source: github_kirti
+      source: artifactoryIntegration
       fileLocation: 'https://github.com/kirtisahu05/ymlTest/edit/master/pipelines.yml'
       fileName: 'pipelines.yml'
       fileDateTime: 'dttm'
