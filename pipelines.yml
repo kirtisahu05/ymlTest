@@ -31,7 +31,7 @@ resources:
       target: 'test'
       props: 'test'
       recursive: false
-      flat: true
+#       flat: true
       excludePatterns: 'test'
       archiveEntries: 'test'
       sortBy: 'test'
