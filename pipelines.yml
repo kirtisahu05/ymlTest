@@ -7,6 +7,21 @@ resources:
       fileLocation: 'https://github.com/kirtisahu05/ymlTest/edit/master/pipelines.yml'
       fileName: 'pipelines.yml'
       fileDateTime: 'dttm'
+  - name: Webhook
+    type: Webhook
+    configuration:
+      webhookName: webhookIntegration
+      payload: 'asd'
+  - name: DistributionRule
+    type: DistributionRule
+    configuration:
+      sourceArtifactory: art     
+      serviceName: citySer
+      siteName: jp
+      cityName: blr
+      countryCodes:
+        - cc1
+        - cc2
   - name: FileSpec
     type: FileSpec
     configuration:      
@@ -57,6 +72,8 @@ pipelines:
           inputResources:
             - name: BuildInfo
             - name: Aql
+            - name: Webhook
+            - name: DistributionRule
         execution:
           onExecute:
             - echo "done"
