@@ -7,7 +7,7 @@ resources:
       fileLocation: 'https://github.com/kirtisahu05/ymlTest/edit/master/pipelines.yml'
       fileName: 'pipelines.yml'
       fileDateTime: 'dttm'
-  - name: kubeClusterIntegrationResource
+  - name: KubeCluster
     type: KubeCluster
     configuration:
       kubernetesConfig: kub_kirti
@@ -79,7 +79,7 @@ pipelines:
             - name: Aql
             - name: Webhook
             - name: DistributionRule
-            - name: kub_kirti
+            - name: KubeCluster
         execution:
           onExecute:
             - echo "done"
