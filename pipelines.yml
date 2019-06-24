@@ -79,7 +79,7 @@ pipelines:
             - name: Aql
             - name: Webhook
             - name: DistributionRule
-            - name: kubeClusterIntegrationResource
+            - name: KubeCluster
         execution:
           onExecute:
             - echo "done"
