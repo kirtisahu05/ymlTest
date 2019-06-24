@@ -13,7 +13,7 @@ resources:
       kubernetesConfig: kub_kirti
       bastionHostIP: 1.2.3.4
       bastionUser: sshUser
-      bastionIntegrationName: sshKeyIntegration
+      bastionIntegrationName: kub_kirti
   - name: Webhook
     type: Webhook
     configuration:
