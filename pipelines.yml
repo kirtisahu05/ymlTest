@@ -13,7 +13,7 @@ resources:
       kubernetesConfig: kub_kirti
       bastionHostIP: 1.2.3.4
       bastionUser: sshUser
-      bastionIntegrationName: kub_kirti
+      bastionIntegrationName: sshKey_kirti
   - name: Webhook
     type: Webhook
     configuration:
@@ -58,8 +58,6 @@ resources:
       buildNumber: 123
 pipelines:
   - name: img_test_pipeline
-    setup:
-      runtime: onHost
     steps:
       - name: Bash_1
         type: Bash
