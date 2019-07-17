@@ -1,5 +1,10 @@
     
 resources:
+  - name: gitResource
+    type: GitRepo
+    configuration:
+      gitProvider: github_kirti
+      path: kirtisahu05/ymlTest
   - name: RemoteFile
     type: RemoteFile
     configuration:
