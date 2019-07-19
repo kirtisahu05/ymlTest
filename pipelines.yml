@@ -23,7 +23,7 @@ resources:
     type: Webhook
     configuration:
       webhookName: webhookIntegration
-      payload: 'asd12345'
+      payload: 'webhookpayloadexample123456789'
   - name: DistributionRule
     type: DistributionRule
     configuration:
