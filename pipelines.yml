@@ -95,6 +95,7 @@ pipelines:
             - name: DistributionRule
             - name: KubeCluster
             - name: imageRes
+            - name: RemoteFile
         execution:
           onExecute:
             - echo "done"
