@@ -100,7 +100,7 @@ pipelines:
             - name: BuildInfo
             - name: Aql
             - name: Webhook
-            - name: DistributionRule myReleaseBundle
+            - name: DistributionRule
             - name: KubeCluster
             - name: imageRes
             - name: RemoteFile
