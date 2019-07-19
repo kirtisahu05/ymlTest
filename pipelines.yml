@@ -64,7 +64,7 @@ resources:
   - name: imageRes
     type: Image
     configuration:
-       registry: docker_kirti
+       registry: mydocker_kirti
        imageName: imageRepo/imageName
        imageTag: initial 
        autoPull: true
