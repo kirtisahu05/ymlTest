@@ -27,7 +27,7 @@ resources:
   - name: DistributionRule
     type: DistributionRule
     configuration:
-      sourceArtifactory: artifactoryIntegration     
+      sourceDistribution: distributionIntegration     
       serviceName: citySer
       siteName: jp
       cityName: blr
