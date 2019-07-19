@@ -61,6 +61,14 @@ resources:
       sourceArtifactory: artifactoryIntegration
       buildName: myBuild
       buildNumber: 123
+  - name: imageName
+    type: Image
+    configuration:
+       registry: dockerRegistryIntegration
+       sourceRepository: <name of the artifactory repo>
+       imageName: myImageName
+       imageTag: betaImage 
+       autoPull: true
 pipelines:
   - name: img_test_pipeline
     steps:
