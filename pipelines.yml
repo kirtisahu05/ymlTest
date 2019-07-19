@@ -100,10 +100,11 @@ pipelines:
             - name: BuildInfo
             - name: Aql
             - name: Webhook
-            - name: DistributionRule
+            - name: DistributionRule myReleaseBundle
             - name: KubeCluster
             - name: imageRes
             - name: RemoteFile
+            - name: myReleaseBundle
         execution:
           onExecute:
             - echo "done"
