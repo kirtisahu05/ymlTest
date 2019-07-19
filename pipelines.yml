@@ -67,7 +67,15 @@ resources:
        registry: mydocker_kirti
        imageName: imageRepo/imageName
        imageTag: initial 
-       autoPull: true
+       autoPull: false
+  -name: my_releaseBundle
+    type: ReleaseBundle
+    configuration:
+      sourceDistribution: distributionIntegration
+      name: myReleaseBundle
+      version: initialVersion
+      isSigned: false
+ 
 pipelines:
   - name: img_test_pipeline
     steps:
