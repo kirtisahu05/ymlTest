@@ -68,7 +68,7 @@ resources:
        imageName: imageRepo/imageName
        imageTag: initial 
        autoPull: false
-  -name: myReleaseBundle
+  - name: myReleaseBundle
     type: ReleaseBundle
     configuration:
       sourceDistribution: distributionIntegration
