@@ -94,6 +94,7 @@ pipelines:
             - name: Webhook
             - name: DistributionRule
             - name: KubeCluster
+            - name: imageRes
         execution:
           onExecute:
             - echo "done"
