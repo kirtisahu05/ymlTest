@@ -61,13 +61,12 @@ resources:
       sourceArtifactory: artifactoryIntegration
       buildName: myBuild
       buildNumber: 123
-  - name: imageName
+  - name: imageRes
     type: Image
     configuration:
-       registry: dockerRegistryIntegration
-       sourceRepository: <name of the artifactory repo>
-       imageName: myImageName
-       imageTag: betaImage 
+       registry: docker_kirti
+       imageName: imageRepo/imageName
+       imageTag: initial 
        autoPull: true
 pipelines:
   - name: img_test_pipeline
@@ -79,6 +78,7 @@ pipelines:
           priority: 0
           outputResources:
             - name: BuildInfo
+            - name: imageRes
         execution:
           onExecute:
             - write_output DockerTagTest "imageTag="$step_id
