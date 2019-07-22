@@ -28,7 +28,7 @@ resources:
     type: DistributionRule
     configuration:
       sourceDistribution: distributionIntegration     
-      serviceName: citySer
+      serviceName: service_test
       siteName: jp
       cityName: blr
       countryCodes:
@@ -54,7 +54,7 @@ resources:
     type: Aql
     configuration:
       sourceArtifactory: artifactoryIntegration
-      query: 'asd'
+      query: 'query12345'
   - name: BuildInfo 
     type: BuildInfo
     configuration:
