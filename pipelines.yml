@@ -19,6 +19,15 @@ resources:
       bastionHostIP: 1.2.3.4
       bastionUser: sshUser
       bastionIntegrationName: sshKey_kirti
+  - name: VmCluster
+     type: VmCluster
+     configuration:
+       sshKey: sshKey_kirti
+       targets:
+        1.2.3.4
+        1.2.3.5
+        1.2.3.6
+
   - name: Webhook
     type: Webhook
     configuration:
@@ -102,6 +111,7 @@ pipelines:
             - name: Webhook
             - name: DistributionRule
             - name: KubeCluster
+            - name: VmCluster
             - name: imageRes
             - name: RemoteFile
             - name: myReleaseBundle
