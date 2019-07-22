@@ -24,9 +24,12 @@ resources:
     configuration:
       sshKey: sshKey_kirti
       targets:
-        - 1.2.3.4
-        - 1.2.3.5
-        - 1.2.3.6
+        - 126.2.97.143
+        - 126.2.97.153
+        - 126.2.67.164
+        - 126.2.97.187
+        - 126.2.97.134
+        - 126.2.67.122
   - name: Webhook
     type: Webhook
     configuration:
