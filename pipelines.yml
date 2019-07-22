@@ -37,7 +37,7 @@ resources:
   - name: FileSpec
     type: FileSpec
     configuration:      
-      sourceArtifactory: docker_kirti
+      sourceArtifactory: artifactoryIntegration
       pattern: 'test'
       aql: 'test'
       target: 'test'
@@ -64,7 +64,7 @@ resources:
   - name: imageRes
     type: Image
     configuration:
-       registry: mydocker_kirti
+       registry: docker_kirti
        imageName: imageRepo/imageName
        imageTag: initial 
        autoPull: false
