@@ -16,9 +16,9 @@ resources:
     type: KubeCluster
     configuration:
       kubernetesConfig: kub_kirti
-#       bastionHostIP: 1.2.3.4
-#       bastionUser: sshUser
-#       bastionIntegrationName: sshKey_kirti
+      bastionHostIP: 192.62.173.194
+      bastionUser: sshUser
+      bastionIntegrationName: sshKey_kirti
   - name: VmCluster
     type: VmCluster
     configuration:
