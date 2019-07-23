@@ -49,16 +49,16 @@ resources:
     type: FileSpec
     configuration:      
       sourceArtifactory: artifactoryIntegration
-      pattern: 'test'
-      aql: 'test'
-      target: 'test'
-      props: 'test'
+      pattern: 'pattern123'
+      aql: 'aql123'
+      target: 'target123'
+      props: 'props123'
       recursive: false
 #       flat: true
-      excludePatterns: 'test'
-      archiveEntries: 'test'
-      sortBy: 'test'
-      sortOrder: 'test'
+      excludePatterns: 'excludePatterns123'
+      archiveEntries: 'archiveEntries123'
+      sortBy: 'sortBy123'
+      sortOrder: 'sortOrder123'
       limit: 1
       offset: 1
   - name: Aql
