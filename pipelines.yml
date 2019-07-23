@@ -117,6 +117,7 @@ pipelines:
             - name: imageRes
             - name: RemoteFile
             - name: myReleaseBundle
+            - name: FileSpec
         execution:
           onExecute:
             - echo "done"
