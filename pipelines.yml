@@ -34,7 +34,7 @@ resources:
     type: Webhook
     configuration:
       webhookName: webhookIntegration
-      payload: 'webhookpayLoad1234567890-initialWebhookpayLoad1234567890'
+      payload: 'webhookpayLoad123456789000000initialWebhookpayLoad12345678900000initialWebhookpayLoad1234567890'
   - name: DistributionRule
     type: DistributionRule
     configuration:
