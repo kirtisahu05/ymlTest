@@ -26,10 +26,10 @@ resources:
       targets:
         - 126.2.97.143
         - 126.2.97.153
-#         - 126.2.67.164
-#         - 126.2.97.187
-#         - 126.2.97.134
-#         - 126.2.67.122
+        - 126.2.67.164
+        - 126.2.97.187
+        - 126.2.97.134
+        - 126.2.67.122
   - name: Webhook
     type: Webhook
     configuration:
@@ -50,7 +50,7 @@ resources:
     configuration:      
       sourceArtifactory: artifactoryIntegration
       pattern: 'pattern123'
-#       aql: 'aql123'
+      aql: 'aql123'
       target: 'target123'
       props: 'props123'
       recursive: false
