@@ -19,17 +19,17 @@ resources:
       bastionHostIP: 192.62.173.194
       bastionUser: sshUser
       bastionIntegrationName: sshKey_kirti
-#   - name: VmCluster
-#     type: VmCluster
-#     configuration:
-#       sshKey: sshKey_kirti
-#       targets:
-#         - 126.2.97.143
-#         - 126.2.97.153
-#         - 126.2.67.164
-#         - 126.2.97.187
-#         - 126.2.97.134
-#         - 126.2.67.122
+  - name: VmCluster
+    type: VmCluster
+    configuration:
+      sshKey: sshKey_kirti
+      targets:
+        - 126.2.97.143
+        - 126.2.97.153
+        - 126.2.67.164
+        - 126.2.97.187
+        - 126.2.97.134
+        - 126.2.67.122
   - name: Webhook
     type: Webhook
     configuration:
