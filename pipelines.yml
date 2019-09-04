@@ -1,6 +1,6 @@
     
 resources:
-  - name: gitResource
+  - name: git_Resource
     type: GitRepo
     configuration:
       gitProvider: github_kirti
@@ -107,7 +107,7 @@ pipelines:
           affinityGroup: bldGroup 
           priority: 0
           inputResources:
-            - name: gitResource
+            - name: git_Resource
             - name: BuildInfo
             - name: Aql
             - name: Webhook
