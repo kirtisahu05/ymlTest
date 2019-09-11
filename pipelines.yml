@@ -1,210 +1,361 @@
-    
 resources:
-  - name: git_Resource
+  - name: gitResource
     type: GitRepo
     configuration:
       gitProvider: github_kirti
       path: kirtisahu05/ymlTest
-  - name: RemoteFile
-    type: RemoteFile
-    configuration:
-      source: artifactoryIntegration
-      fileLocation: 'https://github.com/kirtisahu05/ymlTest/edit/master/pipelines.yml'
-      fileName: 'pipelines.yml'
-      fileDateTime: 'dttm'
-  - name: KubeCluster
-    type: KubeCluster
-    configuration:
-      kubernetesConfig: kub_kirti
-      bastionHostIP: 192.62.173.194
-      bastionUser: sshUser
-      bastionIntegrationName: sshKey_kirti
-  - name: VmCluster
-    type: VmCluster
-    configuration:
-      sshKey: sshKey_kirti
-      targets:
-        - 126.2.97.143
-        - 126.2.97.153
-        - 126.2.67.164
-        - 126.2.97.187
-        - 126.2.97.134
-        - 126.2.67.122
-  - name: Webhook
-    type: Webhook
-    configuration:
-      webhookName: webhookIntegration
-      payload: 'webhookpayLoad123456789000000initialWebhookpayLoad12345678900000initialWebhookpayLoad1234567890'
-  - name: DistributionRule
-    type: DistributionRule
-    configuration:
-      sourceDistribution: distributionIntegration     
-      serviceName: service_test
-      siteName: jp
-      cityName: blr
-      countryCodes:
-        - cc1
-        - cc2
-  - name: FileSpec
-    type: FileSpec
-    configuration:      
-      sourceArtifactory: artifactoryIntegration
-      pattern: 'pattern123'
-      aql: 'aql123'
-      target: 'target123'
-      props: 'props123'
-      recursive: false
-#       flat: true
-      excludePatterns: 'excludePatterns123'
-      archiveEntries: 'archiveEntries123'
-      sortBy: 'sortBy123'
-      sortOrder: 'sortOrder123'
-      limit: 1
-      offset: 1
-  - name: Aql
-    type: Aql
-    configuration:
-      sourceArtifactory: artifactoryIntegration
-      query: 'query12345'
-  - name: BuildInfo 
-    type: BuildInfo
-    configuration:
-      sourceArtifactory: artifactoryIntegration
-      buildName: myBuild
-      buildNumber: 123
-  - name: imageRes
-    type: Image
-    configuration:
-       registry: docker_kirti
-       imageName: imageRepo/imageName
-       imageTag: initial 
-       autoPull: false
-  - name: myReleaseBundle
-    type: ReleaseBundle
-    configuration:
-      sourceDistribution: distributionIntegration
-      name: myReleaseBundle
-      version: initialVersion
-      isSigned: false
- 
-pipelines:
-  - name: img_test_pipeline
+pipelines: 
+  - name: state_test
     steps:
-      - name: Bash_1
+      - name: testReport_u18
         type: Bash
         configuration:
-          affinityGroup: bldGroup 
-          priority: 0
-          outputResources:
-            - name: BuildInfo
-            - name: imageRes
-        execution:
-          onExecute:
-            - write_output DockerTagTest "imageTag="$step_id
-      - name: Bash_2
-        type: Bash
-        configuration:
-          affinityGroup: bldGroup 
-          priority: 0
           inputResources:
-            - name: git_Resource
-            - name: BuildInfo
-            - name: Aql
-            - name: Webhook
-            - name: DistributionRule
-            - name: KubeCluster
-            - name: VmCluster
-            - name: imageRes
-            - name: RemoteFile
-            - name: myReleaseBundle
-            - name: FileSpec
+            - name: gitResource
         execution:
           onExecute:
-            - echo "done"
-      - name: Bash_3
+            - pushd $res_gitResource_resourcePath
+            - sudo chmod +x echoTest.sh
+            - ./echoTest.sh
+      
+      - name: run_file_restore
         type: Bash
         configuration:
-          affinityGroup: bldGroup
-          priority: 0
           inputSteps:
-            - name: Bash_2
-          inputResources:
-            - name: FileSpec
-            - name: RemoteFile
-          integrations:
-            - name: artifactoryIntegration
-            - name: github_kirti
+            - name: testReport_u18
         execution:
           onExecute:
-            - echo "done"
-      - name: Bash_4
+            - printenv
+  - name: trigger_test
+    steps:
+      - name: trigger_1
         type: Bash
         configuration:
-          affinityGroup: bldGroup
+          affinityGroup: trigger
           priority: 0
-          inputSteps:
-            - name: Bash_3
         execution:
           onExecute:
+            - sleep 60
             - echo "done"
-      - name: Bash_5
+      - name: trigger_2
         type: Bash
         configuration:
-          affinityGroup: bldGroup
-          priority: 0
           inputSteps:
-            - name: Bash_4
+            - name: trigger_1
         execution:
           onExecute:
+            - sleep 60
             - echo "done"
-      - name: Bash_6
+      - name: trigger_3
         type: Bash
         configuration:
-          affinityGroup: bldGroup
-          priority: 0
           inputSteps:
-            - name: Bash_5
+            - name: trigger_2
         execution:
           onExecute:
+            - sleep 60
             - echo "done"
-      - name: Bash_7
+      - name: trigger_4
         type: Bash
         configuration:
-          affinityGroup: bldGroup
-          priority: 0
           inputSteps:
-            - name: Bash_6
+            - name: trigger_3
         execution:
           onExecute:
+            - sleep 60
             - echo "done"
-#       - name: bash
-#         type: bash
+      - name: trigger_5
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_1
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_6
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_4
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_7
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_5
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_8
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_1
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_9
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_1
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_10
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_1
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_11
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_7
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_12
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_9
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+      - name: trigger_13
+        type: Bash
+        configuration:
+          inputSteps:
+            - name: trigger_4
+        execution:
+          onExecute:
+            - sleep 60
+            - echo "done"
+
+
+
+
+
+# resources:
+#   - name: git_Resource
+#     type: GitRepo
+#     configuration:
+#       gitProvider: github_kirti
+#       path: kirtisahu05/ymlTest
+#   - name: RemoteFile
+#     type: RemoteFile
+#     configuration:
+#       source: artifactoryIntegration
+#       fileLocation: 'https://github.com/kirtisahu05/ymlTest/edit/master/pipelines.yml'
+#       fileName: 'pipelines.yml'
+#       fileDateTime: 'dttm'
+#   - name: KubeCluster
+#     type: KubeCluster
+#     configuration:
+#       kubernetesConfig: kub_kirti
+#       bastionHostIP: 192.62.173.194
+#       bastionUser: sshUser
+#       bastionIntegrationName: sshKey_kirti
+#   - name: VmCluster
+#     type: VmCluster
+#     configuration:
+#       sshKey: sshKey_kirti
+#       targets:
+#         - 126.2.97.143
+#         - 126.2.97.153
+#         - 126.2.67.164
+#         - 126.2.97.187
+#         - 126.2.97.134
+#         - 126.2.67.122
+#   - name: Webhook
+#     type: Webhook
+#     configuration:
+#       webhookName: webhookIntegration
+#       payload: 'webhookpayLoad123456789000000initialWebhookpayLoad12345678900000initialWebhookpayLoad1234567890'
+#   - name: DistributionRule
+#     type: DistributionRule
+#     configuration:
+#       sourceDistribution: distributionIntegration     
+#       serviceName: service_test
+#       siteName: jp
+#       cityName: blr
+#       countryCodes:
+#         - cc1
+#         - cc2
+#   - name: FileSpec
+#     type: FileSpec
+#     configuration:      
+#       sourceArtifactory: artifactoryIntegration
+#       pattern: 'pattern123'
+#       aql: 'aql123'
+#       target: 'target123'
+#       props: 'props123'
+#       recursive: false
+# #       flat: true
+#       excludePatterns: 'excludePatterns123'
+#       archiveEntries: 'archiveEntries123'
+#       sortBy: 'sortBy123'
+#       sortOrder: 'sortOrder123'
+#       limit: 1
+#       offset: 1
+#   - name: Aql
+#     type: Aql
+#     configuration:
+#       sourceArtifactory: artifactoryIntegration
+#       query: 'query12345'
+#   - name: BuildInfo 
+#     type: BuildInfo
+#     configuration:
+#       sourceArtifactory: artifactoryIntegration
+#       buildName: myBuild
+#       buildNumber: 123
+#   - name: imageRes
+#     type: Image
+#     configuration:
+#        registry: docker_kirti
+#        imageName: imageRepo/imageName
+#        imageTag: initial 
+#        autoPull: false
+#   - name: myReleaseBundle
+#     type: ReleaseBundle
+#     configuration:
+#       sourceDistribution: distributionIntegration
+#       name: myReleaseBundle
+#       version: initialVersion
+#       isSigned: false
+ 
+# pipelines:
+#   - name: img_test_pipeline
+#     steps:
+#       - name: Bash_1
+#         type: Bash
+#         configuration:
+#           affinityGroup: bldGroup 
+#           priority: 0
+#           outputResources:
+#             - name: BuildInfo
+#             - name: imageRes
 #         execution:
 #           onExecute:
-#             - echo "executing..."
-#         triggeredBy:
-#           resources:
-#             - KubeCluster
-#             - RemoteFile
-#             - FileSpec
-#       - name: CreateReleaseBundle
-#         type: CreateReleaseBundle
+#             - write_output DockerTagTest "imageTag="$step_id
+#       - name: Bash_2
+#         type: Bash
 #         configuration:
-#           releaseBundleName: 'test'
-#           releaseBundleVersion: 'test'
-#           dryRun: false
-#           sign: false
-#           storeAtSourceArtifactory: 'test'
-#           description: 'test'
-#           releaseNotes:
-#             content: 'test'
-#             syntax: plain_text
+#           affinityGroup: bldGroup 
+#           priority: 0
 #           inputResources:
-#             - name: KubeCluster
+#             - name: git_Resource
 #             - name: BuildInfo
+#             - name: Aql
+#             - name: Webhook
+#             - name: DistributionRule
+#             - name: KubeCluster
+#             - name: VmCluster
+#             - name: imageRes
+#             - name: RemoteFile
+#             - name: myReleaseBundle
+#             - name: FileSpec
+#         execution:
+#           onExecute:
+#             - echo "done"
+#       - name: Bash_3
+#         type: Bash
+#         configuration:
+#           affinityGroup: bldGroup
+#           priority: 0
 #           inputSteps:
-#             - name: bash
+#             - name: Bash_2
+#           inputResources:
+#             - name: FileSpec
+#             - name: RemoteFile
 #           integrations:
 #             - name: artifactoryIntegration
-#           outputResources:
-#             - name: RemoteFile
+#             - name: github_kirti
+#         execution:
+#           onExecute:
+#             - echo "done"
+#       - name: Bash_4
+#         type: Bash
+#         configuration:
+#           affinityGroup: bldGroup
+#           priority: 0
+#           inputSteps:
+#             - name: Bash_3
+#         execution:
+#           onExecute:
+#             - echo "done"
+#       - name: Bash_5
+#         type: Bash
+#         configuration:
+#           affinityGroup: bldGroup
+#           priority: 0
+#           inputSteps:
+#             - name: Bash_4
+#         execution:
+#           onExecute:
+#             - echo "done"
+#       - name: Bash_6
+#         type: Bash
+#         configuration:
+#           affinityGroup: bldGroup
+#           priority: 0
+#           inputSteps:
+#             - name: Bash_5
+#         execution:
+#           onExecute:
+#             - echo "done"
+#       - name: Bash_7
+#         type: Bash
+#         configuration:
+#           affinityGroup: bldGroup
+#           priority: 0
+#           inputSteps:
+#             - name: Bash_6
+#         execution:
+#           onExecute:
+#             - echo "done"
+# #       - name: bash
+# #         type: bash
+# #         execution:
+# #           onExecute:
+# #             - echo "executing..."
+# #         triggeredBy:
+# #           resources:
+# #             - KubeCluster
+# #             - RemoteFile
+# #             - FileSpec
+# #       - name: CreateReleaseBundle
+# #         type: CreateReleaseBundle
+# #         configuration:
+# #           releaseBundleName: 'test'
+# #           releaseBundleVersion: 'test'
+# #           dryRun: false
+# #           sign: false
+# #           storeAtSourceArtifactory: 'test'
+# #           description: 'test'
+# #           releaseNotes:
+# #             content: 'test'
+# #             syntax: plain_text
+# #           inputResources:
+# #             - name: KubeCluster
+# #             - name: BuildInfo
+# #           inputSteps:
+# #             - name: bash
+# #           integrations:
+# #             - name: artifactoryIntegration
+# #           outputResources:
+# #             - name: RemoteFile
