@@ -5,7 +5,7 @@ resources:
       gitProvider: github_kirti
       path: kirtisahu05/ymlTest
 pipelines: 
-  - name: state_test
+  - name: state_yml_test
     steps:
       - name: testReport_u18
         type: Bash
@@ -26,7 +26,7 @@ pipelines:
         execution:
           onExecute:
             - printenv
-  - name: trigger_test
+  - name: trigger_yml_test
     steps:
       - name: trigger_1
         type: Bash
