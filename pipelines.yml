@@ -14,9 +14,10 @@ pipelines:
             - name: gitResource_1
         execution:
           onExecute:
-            - pushd $res_gitResource_1_resourcePath
-            - sudo chmod +x echoTest.sh
-            - ./echoTest.sh
+              - printenv
+#             - pushd $res_gitResource_1_resourcePath
+#             - sudo chmod +x echoTest.sh
+#             - ./echoTest.sh
       
       - name: run_file_restore
         type: Bash
