@@ -17,7 +17,7 @@ pipelines:
         configuration:
           inputResources:
             - name: gitResource_1
-            - name: bitbucket_kirti
+            - name: bitbucket_Resource_1
         execution:
           onExecute:
               - printenv
