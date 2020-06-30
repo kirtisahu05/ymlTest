@@ -17,7 +17,7 @@ pipelines:
 #             - pushd $res_gitResource_resourcePath
 #             - sudo chmod +x echoTest.sh
 #             - ./echoTest.sh
-            - sleep 4000
+            - sleep 60
             - echo "done"
       
       - name: run_file_restore
